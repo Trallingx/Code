@@ -39,7 +39,7 @@ void io_redirect(void ){
 }
 	
 
-int uart_putchar(char c, FILE *stream) {
+int uart_putchar(char c, char *stream) {
 	if (c == '\n') {
 		uart_putchar('\r', stream);
 	}
@@ -48,7 +48,7 @@ int uart_putchar(char c, FILE *stream) {
 	return 0;
 }
 
-int uart_getchar(FILE *stream) {
+int uart_getchar(char *stream) {
 	loop_until_bit_is_set(UCSR0A, RXC0);
 	if (UCSR0A & _BV(FE0))
 		return _FDEV_EOF;
