@@ -33,5 +33,7 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "C_Cpp.errorSquiggles": "Disabled"
+  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "cmake.configureOnOpen": false
 }

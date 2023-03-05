@@ -1,6 +1,9 @@
 #include "sdprint.h"
 #include "sdcard.h"
 #include "uart.h"
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
 void SD_printR1(uint8_t res)
 {
@@ -171,3 +174,7 @@ void SD_printDataErrToken(uint8_t token)
     if(SD_TOKEN_ERROR(token))
         UART_pputs("\tError\r\n");
 }
+
+
+
+

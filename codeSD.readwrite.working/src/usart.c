@@ -31,9 +31,7 @@ void uart_init(void) {
 	
 }
 
-void io_redirect(void ){
-		
-		
+void io_redirect(void ){	
 		stdout = &f_uart;	//redirect standard output to uart
 		stdin  = &f_uart;  //redirect standard input to uart
 }

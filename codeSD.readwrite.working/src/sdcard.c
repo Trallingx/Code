@@ -5,7 +5,7 @@
 #include "sdprint.h"
 #include "spi.h"
 #include "uart.h"
-
+#include <stdio.h>
 /*******************************************************************************
  Initialize SD card
 *******************************************************************************/
@@ -293,7 +293,7 @@ uint8_t SD_readSingleBlock(uint32_t addr, uint8_t *buf, uint8_t *token)
     CS_DISABLE();
     SPI_transfer(0xFF);
 
-    return res1;
+    return 1;
 }
 
 #define SD_MAX_WRITE_ATTEMPTS   3907
@@ -428,4 +428,19 @@ uint8_t SD_sendOpCond()
     SPI_transfer(0xFF);
 
     return res1;
+}
+
+//print Sector
+
+void print_sector(uint8_t res[5], uint8_t sdBuf[512],uint8_t token){
+    if(SD_R1_NO_ERROR(res[0]) && (token == 0xFE))
+    {
+        for(uint16_t i = 0; i < 512; i++) UART_puthex8(sdBuf[i]);
+        printf("\r\n");
+    }
+    else
+    {
+        printf("Error reading sector\r\n");
+    }
+
 }
