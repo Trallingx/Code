@@ -154,15 +154,24 @@ int main(void)
     }
 
     
-        //store x values into string array and convert to float;    
-        
+      
+
+    //---------------------------------------------------|
+    //store values into string array and convert to float|
+    //---------------------------------------------------|  
+    //Logic: Scan through the array until *LSX is found which represents the end of a line, Line Space and start of x coordinates;
+    //       Find X store location in array and find next y and store size of x coordinates.
+    //       Combine Size of X coordinates into string, convert to float, set decimal point and increase arraylocation.
+    //-----------------------------------------------------------------------------------------------------------------------------|
+    //       Task: Look into findxyd.c and implement finding size of Y coordinates and storing each command at the end of line 
+
       for(int i=0;i<1024;i++)
-    {
+    {//                         *                        LineSpace                         X       
         if(blockCombine[i] == 0x2a && blockCombine[i+1] == 0x0a && blockCombine[i+2] == 0x58 )//&& i < 512-19
         {
             xloc= i+2;
             for(int k =0; k<12;k++)
-            {
+            {//                               Y
                 if(blockCombine[xloc+k] == 0x59)
                     {
                         if(blockCombine[xloc+k-1]!=0x00)
